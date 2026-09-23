@@ -4,10 +4,6 @@ public class CarWash extends WashService {
         super(id, days);
     }
 
-    public CarWash(String id, int days, int units) {
-        super(id, days, units);
-    }
-
     @Override
     public int calculateCharge() {
         int days = getDays();

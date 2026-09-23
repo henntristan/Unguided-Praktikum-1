@@ -14,6 +14,7 @@ public class Main {
             } catch (Exception e) {
             }
         }
+
         if (inputStream == null) {
             inputStream = Main.class.getResourceAsStream("washes.txt");
         }
@@ -41,14 +42,15 @@ public class Main {
                 String type = scanner.next();
                 String id = scanner.next();
                 int days = scanner.nextInt();
-                int units = scanner.nextInt();
+                int units = scanner.nextInt(); // dibaca sesuai format 4 nilai di washes.txt
 
                 if (type.equalsIgnoreCase("MOTORCYCLE")) {
-                    washes[i] = new MotorcycleWash(id, days, units);
+                    washes[i] = new MotorcycleWash(id, days);
                 } else if (type.equalsIgnoreCase("CAR")) {
-                    washes[i] = new CarWash(id, days, units);
+                    washes[i] = new CarWash(id, days);
                 }
             }
+
             for (WashService wash : washes) {
                 if (wash != null) {
                     System.out.println(wash.summary());

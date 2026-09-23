@@ -1,22 +1,13 @@
 public abstract class WashService implements Billable {
     private String id;
     private int days;
-    private int units;
 
     protected WashService(String id, int days) {
-        this(id, days, 1);
-    }
-
-    protected WashService(String id, int days, int units) {
         if (days <= 0) {
             throw new IllegalArgumentException("Days must be greater than zero: " + days);
         }
-        if (units <= 0) {
-            throw new IllegalArgumentException("Units must be greater than zero: " + units);
-        }
         this.id = id;
         this.days = days;
-        this.units = units;
     }
 
     public String getId() {
@@ -25,10 +16,6 @@ public abstract class WashService implements Billable {
 
     public int getDays() {
         return days;
-    }
-
-    public int getUnits() {
-        return units;
     }
 
     @Override
@@ -46,6 +33,6 @@ public abstract class WashService implements Billable {
     }
 
     public String summary() {
-        return id + " | " + label() + " | " + calculateCharge(units);
+        return id + " | " + label() + " | " + calculateCharge();
     }
 }
